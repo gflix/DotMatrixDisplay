@@ -3,6 +3,7 @@ package de.benfm.dotmatrixdisplay;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.util.Log;
 
@@ -19,12 +20,11 @@ public class FullscreenActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate");
 
         setContentView(R.layout.activity_fullscreen);
 
         mContentView = findViewById(R.id.fullscreen_content);
-
-        restoreFullscreen();
 
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,10 +32,31 @@ public class FullscreenActivity extends AppCompatActivity
                 restoreFullscreen();
             }
         });
+
+        mContentView.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, "post()");
+                Log.i(TAG, Integer.toString(mContentView.getWidth()));
+                Log.i(TAG, Integer.toString(mContentView.getHeight()));
+            }
+        });
+
+        restoreFullscreen();
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        Log.i(TAG, "onStart");
+        restoreFullscreen();
     }
 
     protected void restoreFullscreen()
     {
+        Log.i(TAG, "restoreFullscreen");
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
         {
