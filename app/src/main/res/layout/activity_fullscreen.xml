@@ -22,12 +22,21 @@
     <LinearLayout
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
         <SurfaceView
             android:id="@+id/dot_matrix_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
             />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/led_on"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/led_off"/>
     </LinearLayout>
 
 </FrameLayout>
