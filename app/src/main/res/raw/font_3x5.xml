@@ -34,6 +34,48 @@
         <Row>..X</Row>
         <Row>..X</Row>
     </Character>
+    <Character id="5">
+        <Row>XXX</Row>
+        <Row>X..</Row>
+        <Row>XX.</Row>
+        <Row>..X</Row>
+        <Row>XX.</Row>
+    </Character>
+    <Character id="6">
+        <Row>.X.</Row>
+        <Row>X..</Row>
+        <Row>XX.</Row>
+        <Row>X.X</Row>
+        <Row>XXX</Row>
+    </Character>
+    <Character id="7">
+        <Row>XXX</Row>
+        <Row>..X</Row>
+        <Row>..X</Row>
+        <Row>.X.</Row>
+        <Row>.X.</Row>
+    </Character>
+    <Character id="8">
+        <Row>XXX</Row>
+        <Row>X.X</Row>
+        <Row>.X.</Row>
+        <Row>X.X</Row>
+        <Row>XXX</Row>
+    </Character>
+    <Character id="9">
+        <Row>XXX</Row>
+        <Row>X.X</Row>
+        <Row>.XX</Row>
+        <Row>..X</Row>
+        <Row>.X.</Row>
+    </Character>
+    <Character id=" ">
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+    </Character>
     <Character id=":">
         <Row>.</Row>
         <Row>X</Row>
@@ -47,5 +89,54 @@
         <Row>.</Row>
         <Row>.</Row>
         <Row>X</Row>
+    </Character>
+    <Character id="A">
+        <Row>.X.</Row>
+        <Row>X.X</Row>
+        <Row>XXX</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+    </Character>
+    <Character id="J">
+        <Row>.XX</Row>
+        <Row>..X</Row>
+        <Row>..X</Row>
+        <Row>X.X</Row>
+        <Row>.X.</Row>
+    </Character>
+    <Character id="M">
+        <Row>X.X</Row>
+        <Row>XXX</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+    </Character>
+    <Character id="N">
+        <Row>X.X</Row>
+        <Row>XXX</Row>
+        <Row>XXX</Row>
+        <Row>XXX</Row>
+        <Row>X.X</Row>
+    </Character>
+    <Character id="P">
+        <Row>XX.</Row>
+        <Row>X.X</Row>
+        <Row>XX.</Row>
+        <Row>X..</Row>
+        <Row>X..</Row>
+    </Character>
+    <Character id="R">
+        <Row>XX.</Row>
+        <Row>X.X</Row>
+        <Row>XX.</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+    </Character>
+    <Character id="U">
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+        <Row>X.X</Row>
+        <Row>.X.</Row>
     </Character>
 </Font>

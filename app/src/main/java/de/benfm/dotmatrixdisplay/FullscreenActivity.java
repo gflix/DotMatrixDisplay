@@ -45,7 +45,8 @@ public class FullscreenActivity extends AppCompatActivity
 
                 try
                 {
-                    mGridLayout.putString(1, 1, smallFont, "3210");
+                    mGridLayout.putString(1, 1, smallFont, "21:04");
+                    mGridLayout.putString(1, 10, smallFont, "21. JUN");
                 }
                 catch (Exception e)
                 {
