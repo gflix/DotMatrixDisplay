@@ -6,17 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.util.Log;
 
+import java.util.Random;
+
 public class FullscreenActivity extends AppCompatActivity
 {
     private static final String TAG = "FullscreenActivity";
     private DotMatrixLayout mGridLayout;
-
+    private Random random = new Random();
+    private Font smallFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
+
+        try
+        {
+            smallFont = new Font(getResources().openRawResource(R.raw.font_3x5));
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Caught exception: " + e.getMessage());
+        }
 
         setContentView(R.layout.activity_fullscreen);
         mGridLayout = (DotMatrixLayout) findViewById(R.id.grid_layout);
@@ -25,6 +37,20 @@ public class FullscreenActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 restoreFullscreen();
+
+                if (smallFont == null)
+                {
+                    return;
+                }
+
+                try
+                {
+                    mGridLayout.putString(1, 1, smallFont, "3210");
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
 
