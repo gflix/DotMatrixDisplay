@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 
 public class DotMatrixLayout extends GridLayout {
     private final String TAG = "DotMatrixLayout";
-    private final int columnCount = 32;
-    private final int rowCount = 18;
+    private final int columnCount = 36;
+    private final int rowCount = 21;
     private LinearLayout leds[][];
 
     public DotMatrixLayout(Context context)

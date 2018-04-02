@@ -1,4 +1,4 @@
-<Font name="3x5 small" bold="false" version="1.0.0" maxWidth="3" height="5">
+<Font name="3x5 tiny" bold="false" version="1.0.0" maxWidth="3" height="5">
     <Character id="0">
         <Row>.X.</Row>
         <Row>X.X</Row>

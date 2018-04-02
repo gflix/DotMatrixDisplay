@@ -1,0 +1,98 @@
+<Font name="4x6 small" bold="false" version="1.0.0" maxWidth="4" height="6">
+    <Character id="0">
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>X.XX</Row>
+        <Row>XX.X</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+    </Character>
+    <Character id="1">
+        <Row>..X.</Row>
+        <Row>.XX.</Row>
+        <Row>..X.</Row>
+        <Row>..X.</Row>
+        <Row>..X.</Row>
+        <Row>.XXX</Row>
+    </Character>
+    <Character id="2">
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>...X</Row>
+        <Row>..X.</Row>
+        <Row>.X..</Row>
+        <Row>XXXX</Row>
+    </Character>
+    <Character id="3">
+        <Row>XXXX</Row>
+        <Row>..X.</Row>
+        <Row>.XX.</Row>
+        <Row>...X</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+    </Character>
+    <Character id="4">
+        <Row>..X.</Row>
+        <Row>.XX.</Row>
+        <Row>X.X.</Row>
+        <Row>XXXX</Row>
+        <Row>..X.</Row>
+        <Row>..X.</Row>
+    </Character>
+    <Character id="5">
+        <Row>XXXX</Row>
+        <Row>X...</Row>
+        <Row>XXX.</Row>
+        <Row>...X</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+    </Character>
+    <Character id="6">
+        <Row>..X.</Row>
+        <Row>.X..</Row>
+        <Row>XXX.</Row>
+        <Row>X..X</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+    </Character>
+    <Character id="7">
+        <Row>XXXX</Row>
+        <Row>...X</Row>
+        <Row>..X.</Row>
+        <Row>.X..</Row>
+        <Row>.X..</Row>
+        <Row>.X..</Row>
+    </Character>
+    <Character id="8">
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
+    </Character>
+    <Character id="9">
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>X..X</Row>
+        <Row>.XXX</Row>
+        <Row>..X.</Row>
+        <Row>.X..</Row>
+    </Character>
+    <Character id=".">
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>X</Row>
+    </Character>
+    <Character id=":">
+        <Row>.</Row>
+        <Row>X</Row>
+        <Row>.</Row>
+        <Row>.</Row>
+        <Row>X</Row>
+        <Row>.</Row>
+    </Character>
+</Font>

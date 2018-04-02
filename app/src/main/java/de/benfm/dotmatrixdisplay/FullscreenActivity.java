@@ -13,6 +13,7 @@ public class FullscreenActivity extends AppCompatActivity
     private static final String TAG = "FullscreenActivity";
     private DotMatrixLayout mGridLayout;
     private Random random = new Random();
+    private Font tinyFont;
     private Font smallFont;
 
     @Override
@@ -23,7 +24,8 @@ public class FullscreenActivity extends AppCompatActivity
 
         try
         {
-            smallFont = new Font(getResources().openRawResource(R.raw.font_3x5));
+            tinyFont = new Font(getResources().openRawResource(R.raw.font_3x5));
+            smallFont = new Font(getResources().openRawResource(R.raw.font_4x6));
         }
         catch (Exception e)
         {
@@ -38,16 +40,16 @@ public class FullscreenActivity extends AppCompatActivity
             public void onClick(View view) {
                 restoreFullscreen();
 
-                if (smallFont == null)
+                if (tinyFont == null)
                 {
                     return;
                 }
 
                 try
                 {
-                    mGridLayout.putString(-1, -1, smallFont, "123");
-                    mGridLayout.putString(17, 1, smallFont, "21:04");
-                    mGridLayout.putString(1, 13, smallFont, "21. JUN");
+                    mGridLayout.putString(0, 0, smallFont, "0123.45");
+                    mGridLayout.putString(0, 7, smallFont, "67:89");
+                    mGridLayout.putString(7, 16, tinyFont, "21. APR");
                 }
                 catch (Exception e)
                 {
