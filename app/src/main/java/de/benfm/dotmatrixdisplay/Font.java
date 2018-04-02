@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Font {
     private static final String TAG = "Font";
+    private String name = null;
     private int maxWidth = 0;
     private int height = 0;
     private Map<Character, FontCharacter> characters = new HashMap<Character, FontCharacter>();
@@ -43,6 +44,7 @@ public class Font {
                 throw new Exception("invalid document element (" + documentElement.getTagName() + ")");
             }
 
+            name = documentElement.getAttribute("name");
             maxWidth = Integer.parseInt(documentElement.getAttribute("maxWidth"));
             height = Integer.parseInt(documentElement.getAttribute("height"));
 
@@ -68,6 +70,11 @@ public class Font {
         Log.i(TAG, "loadFont(success)");
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
     public FontCharacter getCharacter(char character)
     {
         try
@@ -87,7 +94,13 @@ public class Font {
         {
             for (int i = 0; i < text.length(); ++i)
             {
-                width += getCharacter(text.charAt(i)).getWidth() + (i >= 1 ? 1 : 0);
+                char character = text.charAt(i);
+                FontCharacter fontCharacter = getCharacter(character);
+                if (fontCharacter == null)
+                {
+                    throw new Exception("character \"" + character + "\" not found in font \"" + name + "\"");
+                }
+                width += fontCharacter.getWidth() + (i >= 1 ? 1 : 0);
             }
         }
         return new Point(width, height);

@@ -57,8 +57,11 @@ public class DotMatrixLayout extends GridLayout {
 
     private void switchLed(int x, int y, int resourceId)
     {
-        assert x >= 0 && x < columnCount;
-        assert y >= 0 && y < rowCount;
+        if (x < 0 || x >= columnCount ||
+            y < 0 || y >= rowCount)
+        {
+            return;
+        }
 
         ImageView led = (ImageView) leds[y][x].getChildAt(0);
         led.setImageResource(resourceId);
@@ -81,7 +84,6 @@ public class DotMatrixLayout extends GridLayout {
 
     public void putPattern(int x, int y, boolean pattern[][])
     {
-        Log.i(TAG, "putPattern(x=" + Integer.toString(x) + ", y=" + Integer.toString(y) + ")");
         int py = 0;
         for (boolean[] row: pattern)
         {
@@ -97,20 +99,25 @@ public class DotMatrixLayout extends GridLayout {
 
     public void putString(int x, int y, Font font, String text) throws Exception
     {
-        Point textDimension = font.getTextDimension(text);
-
-        if (x + textDimension.x >= columnCount || y + textDimension.y >= rowCount)
+        if (font == null)
         {
-            throw new Exception("text exceeds the available space");
+            throw new Exception("invalid font");
         }
+        Point textDimension = font.getTextDimension(text);
 
         int px = x;
         for (int i = 0; i < text.length(); ++i)
         {
-            FontCharacter character = font.getCharacter(text.charAt(i));
-            putPattern(px, y, character.getPattern());
+            char character = text.charAt(i);
+            FontCharacter fontCharacter = font.getCharacter(character);
+            if (fontCharacter == null)
+            {
+                throw new Exception("unable to retrieve character \"" + character +
+                    "\" from font \"" + font.getName() + "\"");
+            }
+            putPattern(px, y, fontCharacter.getPattern());
 
-            px += character.getWidth() + 1;
+            px += fontCharacter.getWidth() + 1;
         }
     }
 
