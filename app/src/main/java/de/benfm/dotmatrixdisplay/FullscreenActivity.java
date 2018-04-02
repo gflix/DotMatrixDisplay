@@ -15,6 +15,7 @@ public class FullscreenActivity extends AppCompatActivity
     private Random random = new Random();
     private Font tinyFont;
     private Font smallFont;
+    private Font normalBoldFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +27,7 @@ public class FullscreenActivity extends AppCompatActivity
         {
             tinyFont = new Font(getResources().openRawResource(R.raw.font_3x5));
             smallFont = new Font(getResources().openRawResource(R.raw.font_4x6));
+            normalBoldFont = new Font(getResources().openRawResource(R.raw.font_5x7_bold));
         }
         catch (Exception e)
         {
@@ -47,9 +49,8 @@ public class FullscreenActivity extends AppCompatActivity
 
                 try
                 {
-                    mGridLayout.putString(0, 0, smallFont, "0123.45");
-                    mGridLayout.putString(0, 7, smallFont, "67:89");
-                    mGridLayout.putString(7, 16, tinyFont, "21. APR");
+                    mGridLayout.putString(5, 2, normalBoldFont, "21:04");
+                    mGridLayout.putString(6, 15, tinyFont, "02. APR");
                 }
                 catch (Exception e)
                 {

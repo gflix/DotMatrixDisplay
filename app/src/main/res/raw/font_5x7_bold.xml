@@ -1,0 +1,119 @@
+<Font name="5x7 normal bold" bold="true" version="1.0.0" maxWidth="5" height="7">
+    <Character id="0">
+        <Row>.XXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+    </Character>
+    <Character id="1">
+        <Row>...XX</Row>
+        <Row>..XXX</Row>
+        <Row>.XXXX</Row>
+        <Row>.X.XX</Row>
+        <Row>...XX</Row>
+        <Row>...XX</Row>
+        <Row>...XX</Row>
+    </Character>
+    <Character id="2">
+        <Row>.XXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>...XX</Row>
+        <Row>..XX.</Row>
+        <Row>.XX..</Row>
+        <Row>XX.XX</Row>
+        <Row>XXXXX</Row>
+    </Character>
+    <Character id="3">
+        <Row>XXXXX</Row>
+        <Row>...XX</Row>
+        <Row>..XX.</Row>
+        <Row>.XXXX</Row>
+        <Row>...XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+    </Character>
+    <Character id="4">
+        <Row>...XX</Row>
+        <Row>..XXX</Row>
+        <Row>.XXXX</Row>
+        <Row>XX.XX</Row>
+        <Row>XXXXX</Row>
+        <Row>...XX</Row>
+        <Row>...XX</Row>
+    </Character>
+    <Character id="5">
+        <Row>XXXXX</Row>
+        <Row>XX...</Row>
+        <Row>XX...</Row>
+        <Row>XXXX.</Row>
+        <Row>...XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+    </Character>
+    <Character id="6">
+        <Row>...XX</Row>
+        <Row>..XX.</Row>
+        <Row>.XX..</Row>
+        <Row>XXXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+    </Character>
+    <Character id="7">
+        <Row>XXXXX</Row>
+        <Row>...XX</Row>
+        <Row>...XX</Row>
+        <Row>..XX.</Row>
+        <Row>.XX..</Row>
+        <Row>.XX..</Row>
+        <Row>.XX..</Row>
+    </Character>
+    <Character id="8">
+        <Row>.XXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXX.</Row>
+    </Character>
+    <Character id="9">
+        <Row>.XXX.</Row>
+        <Row>XX.XX</Row>
+        <Row>XX.XX</Row>
+        <Row>.XXXX</Row>
+        <Row>..XX.</Row>
+        <Row>.XX..</Row>
+        <Row>XX...</Row>
+    </Character>
+    <Character id=" ">
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+    </Character>
+    <Character id=":">
+        <Row>..</Row>
+        <Row>XX</Row>
+        <Row>XX</Row>
+        <Row>..</Row>
+        <Row>XX</Row>
+        <Row>XX</Row>
+        <Row>..</Row>
+    </Character>
+    <Character id=".">
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>XX</Row>
+        <Row>XX</Row>
+    </Character>
+</Font>
