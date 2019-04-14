@@ -13,5 +13,10 @@ public class CurrentWeather {
         this.temperatureKelvin = json.getJSONObject("main").getDouble("temp");
     }
 
+    public double getTemperatureCelsius()
+    {
+        return temperatureKelvin - 273.15f;
+    }
+
     public double temperatureKelvin = 0;
 }

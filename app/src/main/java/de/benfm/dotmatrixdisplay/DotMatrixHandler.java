@@ -7,8 +7,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -69,7 +67,7 @@ public class DotMatrixHandler implements Runnable {
             if (currentWeather != null)
             {
                 String text =
-                        Integer.toString((int) (currentWeather.temperatureKelvin - 273.15f)) + "°C";
+                        Integer.toString((int) currentWeather.getTemperatureCelsius()) + "°C";
                 Point textDimension = smallFont.getTextDimension(text);
 
                 dotMatrix.putString((dotMatrix.getColumnCount() - textDimension.x) / 2,12, smallFont,
@@ -92,7 +90,12 @@ public class DotMatrixHandler implements Runnable {
             AsyncTask.Status taskStatus = retrieveCurrentWeatherTask.getStatus();
             if (taskStatus == AsyncTask.Status.PENDING)
             {
+                Log.i(TAG, "updateCurrentWeather(GET)");
                 retrieveCurrentWeatherTask.execute();
+            }
+            else if (taskStatus == AsyncTask.Status.RUNNING)
+            {
+                Log.i(TAG, "updateCurrentWeather(still RUNNING)");
             }
             else if (taskStatus == AsyncTask.Status.FINISHED)
             {
@@ -102,6 +105,7 @@ public class DotMatrixHandler implements Runnable {
                     lastWeatherUpdate = now;
 
                     retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
+                    Log.i(TAG, "updateCurrentWeather(FINISHED)");
                 }
                 catch (Exception e)
                 {
@@ -122,7 +126,7 @@ public class DotMatrixHandler implements Runnable {
 
     private String time = null;
 
-    private static final long weatherUpdateIntervalMilliseconds = 30 * 1000;
+    private static final long weatherUpdateIntervalMilliseconds = 600 * 1000;
     private Date lastWeatherUpdate = new Date(0);
     private RetrieveCurrentWeatherTask retrieveCurrentWeatherTask;
     private CurrentWeather currentWeather = null;
