@@ -79,6 +79,14 @@
         <Row>..X.</Row>
         <Row>.X..</Row>
     </Character>
+    <Character id="-">
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>XX</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+        <Row>..</Row>
+    </Character>
     <Character id=".">
         <Row>.</Row>
         <Row>.</Row>
@@ -94,5 +102,21 @@
         <Row>.</Row>
         <Row>X</Row>
         <Row>.</Row>
+    </Character>
+    <Character id="°">
+        <Row>.X.</Row>
+        <Row>X.X</Row>
+        <Row>.X.</Row>
+        <Row>...</Row>
+        <Row>...</Row>
+        <Row>...</Row>
+    </Character>
+    <Character id="C">
+        <Row>.XX.</Row>
+        <Row>X..X</Row>
+        <Row>X...</Row>
+        <Row>X...</Row>
+        <Row>X..X</Row>
+        <Row>.XX.</Row>
     </Character>
 </Font>

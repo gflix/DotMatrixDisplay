@@ -9,6 +9,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 class DotMatrixRenderer implements GLSurfaceView.Renderer {
+
     public DotMatrixRenderer(Resources resources, DotMatrix dotMatrix) {
         this.dotMatrix = dotMatrix;
         this.ledOn = new Led(resources, R.mipmap.led_on);

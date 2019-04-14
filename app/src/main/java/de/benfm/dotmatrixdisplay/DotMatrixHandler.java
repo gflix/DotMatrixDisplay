@@ -1,11 +1,16 @@
 package de.benfm.dotmatrixdisplay;
 
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.opengl.GLSurfaceView;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DotMatrixHandler implements Runnable {
@@ -26,6 +31,8 @@ public class DotMatrixHandler implements Runnable {
         {
             Log.e(TAG, "Caught exception: " + e.getMessage());
         }
+
+        retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
     }
 
     public void run()
@@ -37,7 +44,11 @@ public class DotMatrixHandler implements Runnable {
 
         try
         {
-            printTime();
+            Date now = GregorianCalendar.getInstance().getTime();
+            updateTime(now);
+            updateCurrentWeather(now);
+
+            updateDotMatrixDisplay();
             handler.postDelayed(this, 2000);
         }
         catch (Exception e)
@@ -46,17 +57,59 @@ public class DotMatrixHandler implements Runnable {
         }
     }
 
-    private void printTime() throws Exception
+    private void updateDotMatrixDisplay() throws Exception
     {
-        String timeString = new SimpleDateFormat("HH:mm").
-                format(GregorianCalendar.getInstance().getTime());
-
         synchronized (dotMatrix)
         {
-            dotMatrix.putString(5, 2, normalBoldFont, timeString);
+            dotMatrix.reset();
+            if (time != null)
+            {
+                dotMatrix.putString(6, 2, normalBoldFont, time);
+            }
+            if (currentWeather != null)
+            {
+                String text =
+                        Integer.toString((int) (currentWeather.temperatureKelvin - 273.15f)) + "°C";
+                Point textDimension = smallFont.getTextDimension(text);
+
+                dotMatrix.putString((dotMatrix.getColumnCount() - textDimension.x) / 2,12, smallFont,
+                        text);
+            }
         }
 
         glSurfaceView.requestRender();
+    }
+
+    private void updateTime(Date now)
+    {
+        time = new SimpleDateFormat("HH:mm").format(now);
+    }
+
+    private void updateCurrentWeather(Date now)
+    {
+        if (now.getTime() > lastWeatherUpdate.getTime() + weatherUpdateIntervalMilliseconds)
+        {
+            AsyncTask.Status taskStatus = retrieveCurrentWeatherTask.getStatus();
+            if (taskStatus == AsyncTask.Status.PENDING)
+            {
+                retrieveCurrentWeatherTask.execute();
+            }
+            else if (taskStatus == AsyncTask.Status.FINISHED)
+            {
+                try
+                {
+                    currentWeather = new CurrentWeather(retrieveCurrentWeatherTask.get());
+                    lastWeatherUpdate = now;
+
+                    retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
+                }
+                catch (Exception e)
+                {
+                    currentWeather = null;
+                    Log.e(TAG, "updateCurrentWeather(" + e.toString() + ")");
+                }
+            }
+        }
     }
 
     private static final String TAG = "DotMatrixHandler";
@@ -66,4 +119,11 @@ public class DotMatrixHandler implements Runnable {
     private Font tinyFont;
     private Font smallFont;
     private Font normalBoldFont;
+
+    private String time = null;
+
+    private static final long weatherUpdateIntervalMilliseconds = 30 * 1000;
+    private Date lastWeatherUpdate = new Date(0);
+    private RetrieveCurrentWeatherTask retrieveCurrentWeatherTask;
+    private CurrentWeather currentWeather = null;
 }

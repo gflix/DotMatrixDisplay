@@ -8,7 +8,11 @@ public class DotMatrix {
     public DotMatrix()
     {
         leds = new boolean[rowCount][columnCount];
+        reset();
+    }
 
+    public void reset()
+    {
         for (int y = 0; y < rowCount; ++y)
         {
             for (int x = 0; x < columnCount; ++x)
