@@ -1,6 +1,7 @@
 package de.benfm.dotmatrixdisplay;
 
-import android.content.Context;
+import android.content.res.Resources;
+import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.util.Log;
 
@@ -9,24 +10,17 @@ import java.util.GregorianCalendar;
 
 public class DotMatrixHandler implements Runnable {
 
-    private static final String TAG = "DotMatrixHandler";
-    private Handler handler;
-    private DotMatrixLayout dotMatrixLayout;
-    private Font tinyFont;
-    private Font smallFont;
-    private Font normalBoldFont;
-    private int i = 0;
-
-    public DotMatrixHandler(Context context, Handler handler, DotMatrixLayout dotMatrixLayout)
+    public DotMatrixHandler(Resources resources, Handler handler, DotMatrix dotMatrix, GLSurfaceView glSurfaceView)
     {
         this.handler = handler;
-        this.dotMatrixLayout = dotMatrixLayout;
+        this.dotMatrix = dotMatrix;
+        this.glSurfaceView = glSurfaceView;
 
         try
         {
-            tinyFont = new Font(context.getResources().openRawResource(R.raw.font_3x5));
-            smallFont = new Font(context.getResources().openRawResource(R.raw.font_4x6));
-            normalBoldFont = new Font(context.getResources().openRawResource(R.raw.font_5x7_bold));
+            tinyFont = new Font(resources.openRawResource(R.raw.font_3x5));
+            smallFont = new Font(resources.openRawResource(R.raw.font_4x6));
+            normalBoldFont = new Font(resources.openRawResource(R.raw.font_5x7_bold));
         }
         catch (Exception e)
         {
@@ -36,7 +30,7 @@ public class DotMatrixHandler implements Runnable {
 
     public void run()
     {
-        if (dotMatrixLayout == null)
+        if (dotMatrix == null)
         {
             return;
         }
@@ -57,6 +51,19 @@ public class DotMatrixHandler implements Runnable {
         String timeString = new SimpleDateFormat("HH:mm").
                 format(GregorianCalendar.getInstance().getTime());
 
-        dotMatrixLayout.putString(5, 2, normalBoldFont, timeString);
+        synchronized (dotMatrix)
+        {
+            dotMatrix.putString(5, 2, normalBoldFont, timeString);
+        }
+
+        glSurfaceView.requestRender();
     }
+
+    private static final String TAG = "DotMatrixHandler";
+    private Handler handler;
+    private DotMatrix dotMatrix;
+    private GLSurfaceView glSurfaceView;
+    private Font tinyFont;
+    private Font smallFont;
+    private Font normalBoldFont;
 }
