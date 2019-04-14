@@ -9,7 +9,7 @@ import android.util.Log;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
-public class FullscreenActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +83,7 @@ public class FullscreenActivity extends AppCompatActivity {
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
-    private static final String TAG = "FullscreenActivity";
+    private static final String TAG = "MainActivity";
     private GLSurfaceView glSurfaceView;
     private DotMatrix dotMatrix;
     private DotMatrixHandler dotMatrixHandler;
