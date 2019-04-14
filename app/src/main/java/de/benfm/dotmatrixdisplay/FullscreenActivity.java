@@ -259,6 +259,7 @@ class DotMatrixRenderer implements GLSurfaceView.Renderer {
 
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         Log.i(TAG, "onSurfaceCreated()");
+        gl.glEnable(GL10.GL_TEXTURE_2D);
         square.reloadAssets(gl);
 /*        gl.glDisable(GL10.GL_DITHER);
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
@@ -305,10 +306,19 @@ class DotMatrixRenderer implements GLSurfaceView.Renderer {
         Log.i(TAG, "onDrawFrame()");
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
-        gl.glTranslatef(0.0f, 0.0f, -5.0f);
+        gl.glTranslatef(0.0f, 0.0f, -50.0f);
 
         square.draw(gl);
-/*
+        gl.glTranslatef(2.0f, 0.0f, 0.0f);
+        square.draw(gl);
+        gl.glTranslatef(-2.0f, -2.0f, 0.0f);
+        square.draw(gl);
+
+        gl.glLoadIdentity();
+        gl.glTranslatef(-4.0f, 0.0f, -50.0f);
+        square.draw(gl);
+
+        /*
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
         gl.glTranslatef(0, 0, -3.0f);
