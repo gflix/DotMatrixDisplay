@@ -1,10 +1,9 @@
 package de.benfm.dotmatrixdisplay;
 
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.util.Log;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -15,12 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         dotMatrix = new DotMatrix();
+        dotMatrixRenderer = new DotMatrixRenderer(getResources(), dotMatrix);
 
-        glSurfaceView = new GLSurfaceView(this);
+        setContentView(R.layout.main_activity);
+
+        glSurfaceView = (GLSurfaceView) findViewById(R.id.glSurfaceView);
         glSurfaceView.setRenderer(new DotMatrixRenderer(getResources(), dotMatrix));
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
-        setContentView(glSurfaceView);
-        glSurfaceView.setKeepScreenOn(true);
 
         handler = new Handler();
         dotMatrixHandler = new DotMatrixHandler(this.getResources(), handler, dotMatrix, glSurfaceView);
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
                 restoreFullscreen(false);
             }
         });
+
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void restoreFullscreen(boolean forceHide)
     {
-        ActionBar actionBar = getSupportActionBar();
         int systemUiVisibility =
             View.SYSTEM_UI_FLAG_LOW_PROFILE |
             View.SYSTEM_UI_FLAG_FULLSCREEN |
@@ -79,19 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (toogleFullscreen)
         {
-            if (actionBar != null)
-            {
-                actionBar.hide();
-            }
-
+            toolbar.setVisibility(View.GONE);
             systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
         }
         else
         {
-            if (actionBar != null)
-            {
-                actionBar.show();
-            }
+            toolbar.setVisibility(View.VISIBLE);
         }
         glSurfaceView.setSystemUiVisibility(systemUiVisibility);
         toogleFullscreen = !toogleFullscreen;
@@ -100,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private GLSurfaceView glSurfaceView;
     private DotMatrix dotMatrix;
+    private DotMatrixRenderer dotMatrixRenderer;
     private DotMatrixHandler dotMatrixHandler;
     private Handler handler;
+
+    private Toolbar toolbar;
 
     private boolean toogleFullscreen = false;
 }
