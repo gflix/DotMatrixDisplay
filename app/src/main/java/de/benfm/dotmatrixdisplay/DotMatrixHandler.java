@@ -102,9 +102,6 @@ public class DotMatrixHandler implements Runnable {
                 try
                 {
                     currentWeather = new CurrentWeather(retrieveCurrentWeatherTask.get());
-                    lastWeatherUpdate = now;
-
-                    retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
                     Log.i(TAG, "updateCurrentWeather(FINISHED)");
                 }
                 catch (Exception e)
@@ -112,6 +109,8 @@ public class DotMatrixHandler implements Runnable {
                     currentWeather = null;
                     Log.e(TAG, "updateCurrentWeather(" + e.toString() + ")");
                 }
+                lastWeatherUpdate = now;
+                retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
             }
         }
     }
