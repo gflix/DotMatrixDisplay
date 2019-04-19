@@ -4,9 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -15,8 +12,6 @@ import android.preference.PreferenceActivity;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
@@ -66,12 +61,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     };
 
     /**
-     * Helper method to determine if the device has an extra-large screen. For
-     * example, 10" tablets are extra-large.
+     * Helper method to determine if the device has a large screen. For
+     * example, 7" tablets are large.
      */
-    private static boolean isXLargeTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
+    private static boolean isLargeTablet(Context context) {
+        Configuration configuration = context.getResources().getConfiguration();
+        return (configuration.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                    Configuration.SCREENLAYOUT_SIZE_LARGE ||
+                configuration.orientation == Configuration.ORIENTATION_LANDSCAPE;
     }
 
     /**
@@ -129,14 +126,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     @Override
     public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
+        return isLargeTablet(this);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
@@ -154,7 +151,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      * This fragment shows general preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
