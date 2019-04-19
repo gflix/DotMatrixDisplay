@@ -87,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_refresh:
+                // User chose the "Refresh" item
+                dotMatrixHandler.refresh();
+                return true;
 
             default:
                 // If we got here, the user's action was not recognized.

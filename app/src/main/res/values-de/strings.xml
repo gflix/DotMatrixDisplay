@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DotMatrixDisplay</string>
+    <string name="action_refresh">Aktualisieren</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_api_key_title">API-Key</string>
+    <string name="pref_header_about">Über</string>
+    <string name="pref_header_open_weather">OpenWeather</string>
+    <string name="pref_location_id_title">Ortskennung</string>
+    <string name="pref_title_version">Version</string>
+</resources>

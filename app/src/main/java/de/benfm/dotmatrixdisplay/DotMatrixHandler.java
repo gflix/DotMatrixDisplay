@@ -62,6 +62,11 @@ public class DotMatrixHandler implements Runnable {
         }
     }
 
+    public void refresh()
+    {
+        forceWeatherUpdate = true;
+    }
+
     private void updateDotMatrixDisplay() throws Exception
     {
         synchronized (dotMatrix)
@@ -92,7 +97,8 @@ public class DotMatrixHandler implements Runnable {
 
     private void updateCurrentWeather(Date now, String openWeatherLocationId, String openWeatherApiKey)
     {
-        if (now.getTime() > lastWeatherUpdate.getTime() + weatherUpdateIntervalMilliseconds)
+        if (now.getTime() > lastWeatherUpdate.getTime() + weatherUpdateIntervalMilliseconds ||
+            forceWeatherUpdate)
         {
             AsyncTask.Status taskStatus = retrieveCurrentWeatherTask.getStatus();
             if (taskStatus == AsyncTask.Status.PENDING)
@@ -128,6 +134,7 @@ public class DotMatrixHandler implements Runnable {
                         Toast.LENGTH_SHORT);
                     toast.show();
                 }
+                forceWeatherUpdate = false;
                 lastWeatherUpdate = now;
                 retrieveCurrentWeatherTask = new RetrieveCurrentWeatherTask();
             }
@@ -154,6 +161,7 @@ public class DotMatrixHandler implements Runnable {
 
     private String time = null;
 
+    private boolean forceWeatherUpdate = false;
     private static final long weatherUpdateIntervalMilliseconds = 600 * 1000;
     private Date lastWeatherUpdate = new Date(0);
     private RetrieveCurrentWeatherTask retrieveCurrentWeatherTask;
