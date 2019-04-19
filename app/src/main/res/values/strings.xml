@@ -8,8 +8,11 @@
     <!-- OpenWeather settings screen -->
     <string name="pref_header_open_weather">OpenWeather</string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_location_id">Location ID</string>
+    <string name="pref_default_location_id">2950159</string> <!-- Berlin, DE -->
+
+    <string name="pref_title_api_key">API key</string>
+    <string name="pref_default_api_key"></string>
 
     <!-- About screen -->
     <string name="pref_header_about">About</string>
