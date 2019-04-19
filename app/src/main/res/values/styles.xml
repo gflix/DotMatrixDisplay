@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FullscreenTheme" parent="AppTheme">
+    <style name="MainTheme" parent="AppTheme">
         <!--item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item-->
         <!--item name="android:windowActionBarOverlay">true</item-->
         <item name="android:windowBackground">@null</item>
@@ -18,9 +18,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="FullscreenTheme.Toolbar" parent="FullscreenTheme">
+    <style name="MainTheme.Toolbar" parent="MainTheme">
         <item name="android:background">@color/colorPrimaryDark</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <!--item name="android:textColorPrimary">@color/white</item-->
+    </style>
+
+    <style name="SettingsTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>
