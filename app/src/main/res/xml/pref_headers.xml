@@ -3,8 +3,13 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="de.benfm.dotmatrixdisplay.SettingsActivity$GeneralPreferenceFragment"
+        android:fragment="de.benfm.dotmatrixdisplay.SettingsActivity$OpenWeatherPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/pref_header_general" />
+        android:title="@string/pref_header_open_weather" />
+
+    <header
+        android:fragment="de.benfm.dotmatrixdisplay.SettingsActivity$AboutPreferenceFragment"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/pref_header_about" />
 
 </preference-headers>
