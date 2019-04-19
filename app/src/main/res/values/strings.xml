@@ -8,11 +8,13 @@
     <!-- OpenWeather settings screen -->
     <string name="pref_header_open_weather">OpenWeather</string>
 
-    <string name="pref_title_location_id">Location ID</string>
-    <string name="pref_default_location_id">2950159</string> <!-- Berlin, DE -->
+    <string name="pref_location_id_title">Location ID</string>
+    <string name="pref_location_id_default">2950159</string> <!-- Berlin, DE -->
+    <string name="pref_location_id_key">open_weather_location_id</string>
 
-    <string name="pref_title_api_key">API key</string>
-    <string name="pref_default_api_key"></string>
+    <string name="pref_api_key_title">API key</string>
+    <string name="pref_api_key_default"></string>
+    <string name="pref_api_key_key">open_weather_api_key</string>
 
     <!-- About screen -->
     <string name="pref_header_about">About</string>

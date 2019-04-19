@@ -164,8 +164,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("open_weather_location_id"));
-            bindPreferenceSummaryToValue(findPreference("open_weather_api_ke"));
+            bindPreferenceSummaryToValue(findPreference(
+                    getResources().getString(R.string.pref_location_id_key)));
+            bindPreferenceSummaryToValue(findPreference(
+                    getResources().getString(R.string.pref_api_key_key)));
         }
 
         @Override

@@ -1,7 +1,9 @@
 package de.benfm.dotmatrixdisplay;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 
         handler = new Handler();
-        dotMatrixHandler = new DotMatrixHandler(this.getResources(), handler, dotMatrix, glSurfaceView);
+        dotMatrixHandler = new DotMatrixHandler(this, handler, dotMatrix, glSurfaceView);
 
         glSurfaceView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 
         restoreFullscreen(true);
         dotMatrixHandler.run();

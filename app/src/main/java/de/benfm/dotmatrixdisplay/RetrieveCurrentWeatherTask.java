@@ -10,7 +10,20 @@ public class RetrieveCurrentWeatherTask extends AsyncTask<Void, Void, JSONObject
     {
         try
         {
-            return JsonHttpClient.get("http://nas.benfm.de/public/test.json");
+            if (!(openWeatherLocationId instanceof String) || openWeatherLocationId.isEmpty())
+            {
+                throw new IllegalArgumentException("OpenWeather location ID is empty");
+            }
+            if (!(openWeatherApiKey instanceof String) || openWeatherApiKey.isEmpty())
+            {
+                throw new IllegalArgumentException("OpenWeather API key is empty");
+            }
+            String url =
+                "http://api.openweathermap.org/data/2.5/weather?id=" +
+                openWeatherLocationId +
+                "&APPID=" +
+                openWeatherApiKey;
+            return JsonHttpClient.get(url);
         }
         catch (Exception e)
         {
@@ -23,6 +36,9 @@ public class RetrieveCurrentWeatherTask extends AsyncTask<Void, Void, JSONObject
     {
         return this.exception;
     }
+
+    public String openWeatherLocationId;
+    public String openWeatherApiKey;
 
     private Exception exception = null;
 }
